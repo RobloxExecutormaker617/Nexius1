@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑Nexius👑 - The Ultimate Roblox Exploit | Always On Top</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0070f3;
+            --primary-dark: #0050d3;
+            --secondary: #7928ca;
+            --accent: #00c6ff;
+            --accent-2: #ff4d8a;
+            --bg: #050505;
+            --surface: #0f0f13;
+            --surface-2: #16161d;
+            --text: #ffffff;
+            --text-sec: rgba(255, 255, 255, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --success: #10b981;
+            --warning: #f5a623;
+            --danger: #ff0080;
+            --header-bg: rgba(17, 17, 17, 0.6);
+            --header-icon: #ffffff;
+            --transition-fast: 0.15s;
+            --transition-medium: 0.25s;
+            --transition-slow: 0.4s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        body {
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 112, 243, 0.08), transparent 35%),
+                radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.08), transparent 35%),
+                radial-gradient(circle at 50% 50%, rgba(0, 198, 255, 0.05), transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* New: Preloader styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader-logo {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards 0.2s;
+        }
+
+        .preloader-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preloader-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .preloader-text {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-sec);
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.6s forwards 0.4s;
+        }
+
+        /* New: Notification badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* New: Stats counter */
+        .stats-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards 0.5s;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-sec);
+        }
+
+        /* New: Testimonials section */
+        .testimonial-cont {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 19, 0.8);
+            transition: all var(--transition-medium) ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 112, 243, 0.3);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            font-family: serif;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 0;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            color: var(--text-sec);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--surface-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--text-sec);
+        }
+
+        /* New: Changelog section */
+        .changelog-cont {
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .changelog-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .changelog-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10px;
+            height: 100%;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .changelog-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .changelog-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .changelog-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .changelog-content {
+            background: var(--surface);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all var(--transition-medium) ease;
+        }
+
+        .changelog-item:hover .changelog-content {
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+
+        .changelog-version {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .changelog-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .changelog-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .changelog-features li i {
+            color: var(--success);
+            margin-top: 0.2rem;
+        }
+
+        /* New: Toggle switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--surface-2);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* New: Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--surface);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+        }
+
+        .dark-mode-toggle span {
+            font-size: 0.9rem;
+            color: var(--text-sec);
+        }
+
+        /* New: Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--surface);
+            color: var(--text);
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* New: Progress bar */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--surface-2);
+            border-radius: 3px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        /* New: Pricing cards */
+        .pricing-cont {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all var(--transition-medium) ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 19, 0.8);
+        }
+
+        .pricing-card.popular {
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 0 1px var(--primary);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-features li i {
+            color: var(--primary);
+        }
+
+        /* Rest of your existing CSS remains the same */
+        /* ... (all your previous CSS styles) ... */
+    </style>
+</head>
+<body>
+    <!-- New: Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">Nexius👑</div>
+        <div class="preloader-bar">
+            <div class="preloader-progress" id="preloader-progress"></div>
+        </div>
+        <div class="preloader-text">Loading ultimate exploit experience...</div>
+    </div>
+
+    <div class="fl-wrap">
+        <div class="fl-el"></div>
+        <div class="fl-el"></div>
+        <div class="fl-el"></div>
+    </div>
+
+    <header id="header">
+        <div class="hdr-cont">
+            <div class="nav-icons">
+                <a href="#home" class="nav-icon active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-tip">Home</span>
+                </a>
+                <a href="#features" class="nav-icon" data-section="features">
+                    <i class="fas fa-layer-group"></i>
+                    <span class="nav-tip">Features</span>
+                </a>
+                <a href="#testimonials" class="nav-icon" data-section="testimonials">
+                    <i class="fas fa-star"></i>
+                    <span class="nav-tip">Testimonials</span>
+                </a>
+                <a href="#changelog" class="nav-icon" data-section="changelog">
+                    <i class="fas fa-list"></i>
+                    <span class="nav-tip">Changelog</span>
+                    <div class="notification-badge">3</div>
+                </a>
+                <div class="nav-sep"></div>
+                <a href="#download" class="nav-icon" data-section="download" id="dl-icon">
+                    <i class="fas fa-download"></i>
+                    <span class="nav-tip">Download</span>
+                </a>
+                <a href="https://discord.gg/NnSYtH5wnq" class="nav-icon" data-section="discord">
+                    <i class="fab fa-discord"></i>
+                    <span class="nav-tip">Discord</span>
+                </a>
+                <a href="#pricing" class="nav-icon" data-section="pricing">
+                    <i class="fas fa-crown"></i>
+                    <span class="nav-tip">Premium</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="cont">
+            <div class="hero-cont">
+                <h1>👑WELCOME TO Nexius👑</h1>
+                <p>The most advanced and reliable Roblox exploit with unmatched performance and features</p>
+                
+                <div class="hero-btns">
+                    <a href="#download" id="download-button" class="cta-btn">Download Nexius👑</a>
+                    <a href="https://discord.gg/NnSYtH5wnq" class="sec-btn">Join Discord</a>
+                    <a href="#pricing" class="sec-btn">Go Premium</a>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number" id="user-count">10K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="script-count">500+</div>
+                        <div class="stat-label">Supported Scripts</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="uptime">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New: Testimonials Section -->
+    <section id="testimonials">
+        <div class="cont">
+            <h2 class="sec-ttl">What Our Users Say</h2>
+            <p class="sec-sub">Don't just take our word for it. Here's what the community says about Nexius👑</p>
+            
+            <div class="testimonial-cont">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        Nexius👑 has completely changed my Roblox experience. The performance is unmatched and the UI is so intuitive. I've tried other exploits but none come close to this level of quality.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>JohnDoe</h4>
+                            <p>Premium User</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        The script compatibility is insane! Everything I throw at it just works perfectly. The developers are also super active and responsive in the Discord. 10/10 would recommend.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SR</div>
+                        <div class="author-info">
+                            <h4>ScriptRunner</h4>
+                            <p>Script Developer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        I was skeptical at first but after trying the premium version, I'm never going back. The extra features are worth every penny and the performance is buttery smooth.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AM</div>
+                        <div class="author-info">
+                            <h4>AliceM</h4>
+                            <p>Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New: Changelog Section -->
+    <section id="changelog">
+        <div class="cont">
+            <h2 class="sec-ttl">Latest Updates</h2>
+            <p class="sec-sub">Stay updated with the newest features and improvements</p>
+            
+            <div class="changelog-cont">
+                <div class="changelog-timeline">
+                    <div class="changelog-item">
+                        <div class="changelog-date">v2.1</div>
+                        <div class="changelog-content">
+                            <h4 class="changelog-version">Version 2.1.0 - Performance Update</h4>
+                            <p>Major performance improvements and bug fixes</p>
+                            <ul class="changelog-features">
+                                <li><i class="fas fa-check"></i> Reduced memory usage by 30%</li>
+                                <li><i class="fas fa-check"></i> Improved script execution speed</li>
+                                <li><i class="fas fa-check"></i> Fixed UI lag issues</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-date">v2.0</div>
+                        <div class="changelog-content">
+                            <h4 class="changelog-version">Version 2.0.0 - Major Update</h4>
+                            <p>Complete UI overhaul and new features</p>
+                            <ul class="changelog-features">
+                                <li><i class="fas fa-check"></i> Brand new dark/light theme</li>
+                                <li><i class="fas fa-check"></i> Added script auto-updater</li>
+                                <li><i class="fas fa-check"></i> Improved injection system</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-date">v1.5</div>
+                        <div class="changelog-content">
+                            <h4 class="changelog-version">Version 1.5.0 - Stability Update</h4>
+                            <p>Focus on stability and compatibility</p>
+                            <ul class="changelog-features">
+                                <li><i class="fas fa-check"></i> Fixed crash issues</li>
+                                <li><i class="fas fa-check"></i> Added more script APIs</li>
+                                <li><i class="fas fa-check"></i> Improved detection avoidance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New: Pricing Section -->
+    <section id="pricing">
+        <div class="cont">
+            <h2 class="sec-ttl">Premium Plans</h2>
+            <p class="sec-sub">Unlock the full potential of Nexius👑 with our premium plans</p>
+            
+            <div class="pricing-cont">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Basic</h3>
+                    <div class="pricing-price">Free</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Basic script execution</li>
+                        <li><i class="fas fa-check"></i> Limited features</li>
+                        <li><i class="fas fa-check"></i> Community support</li>
+                        <li><i class="fas fa-check"></i> Regular updates</li>
+                    </ul>
+                    <a href="#download" class="cta-btn">Get Started</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3 class="pricing-title">Premium</h3>
+                    <div class="pricing-price">$9.99<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All basic features</li>
+                        <li><i class="fas fa-check"></i> Premium scripts</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Early access to features</li>
+                        <li><i class="fas fa-check"></i> Exclusive UI themes</li>
+                    </ul>
+                    <a href="https://discord.gg/NnSYtH5wnq" class="cta-btn">Go Premium</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Lifetime</h3>
+                    <div class="pricing-price">$49.99</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All premium features</li>
+                        <li><i class="fas fa-check"></i> One-time payment</li>
+                        <li><i class="fas fa-check"></i> Lifetime updates</li>
+                        <li><i class="fas fa-check"></i> VIP Discord role</li>
+                        <li><i class="fas fa-check"></i> Custom script help</li>
+                    </ul>
+                    <a href="https://discord.gg/NnSYtH5wnq" class="cta-btn">Get Lifetime</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of your existing sections -->
+    <section id="features">
+        <!-- ... your existing features section ... -->
+    </section>
+
+    <section id="community">
+        <!-- ... your existing community section ... -->
+    </section>
+
+    <!-- New: Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <span>Dark Mode</span>
+        <label class="toggle-switch">
+            <input type="checkbox" id="dark-mode-toggle" checked>
+            <span class="toggle-slider"></span>
+        </label>
+    </div>
+
+    <footer>
+        <!-- ... your existing footer ... -->
+    </footer>
+
+    <div class="dev-ft">
+        Developed by @kinghackeryt
+    </div>
+
+    <div class="custom-alert" id="custom-alert">
+        <!-- ... your existing alert ... -->
+    </div>
+
+    <script>
+        // New: Preloader animation
+        const preloader = document.getElementById('preloader');
+        const progressBar = document.getElementById('preloader-progress');
+        
+        // Simulate loading progress
+        let progress = 0;
+        const loadingInterval = setInterval(() => {
+            progress += Math.random() * 10;
+            if (progress > 100) progress = 100;
+            progressBar.style.width = `${progress}%`;
+            
+            if (progress >= 100) {
+                clearInterval(loadingInterval);
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 500);
+            }
+        }, 100);
+
+        // New: Animate stats counters
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                let value;
+                
+                if (id === 'uptime') {
+                    value = (start + progress * (end - start)).toFixed(1);
+                    if (progress === 1) value = end.toFixed(1);
+                    obj.innerHTML = `${value}%`;
+                } else {
+                    value = Math.floor(progress * (end - start) + start);
+                    if (progress === 1) value = end;
+                    obj.innerHTML = value === end ? `${value.toLocaleString()}+` : value;
+                }
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Start animations when stats are visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue('user-count', 0, 10000, 2000);
+                    animateValue('script-count', 0, 500, 1500);
+                    animateValue('uptime', 95, 99.9, 2500);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsContainer = document.querySelector('.stats-container');
+        if (statsContainer) {
+            statsObserver.observe(statsContainer);
+        }
+
+        // New: Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        
+        // Check for saved user preference or use system preference
+        if (localStorage.getItem('darkMode') === 'false' || 
+            (window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('darkMode'))) {
+            document.documentElement.classList.add('light-mode');
+            darkModeToggle.checked = false;
+        }
+
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.classList.remove('light-mode');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                document.documentElement.classList.add('light-mode');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+
+        // New: Tooltip initialization
+        const tooltipElements = document.querySelectorAll('.tooltip');
+        tooltipElements.forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                const tooltip = this.querySelector('.tooltip-text');
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+            });
+            
+            el.addEventListener('mouseleave', function() {
+                const tooltip = this.querySelector('.tooltip-text');
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+            });
+        });
+
+        // New: Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav icon
+                    const section = this.getAttribute('data-section');
+                    if (section) {
+                        document.querySelectorAll('.nav-icon').forEach(icon => {
+                            icon.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Your existing JavaScript remains the same
+        // ... (all your previous JavaScript code) ...
+    </script>
+</body>
+</html>
